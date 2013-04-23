@@ -1,4 +1,2 @@
-realsocket
-==========
-
-A socket module
+realsocket-demo
+===============
