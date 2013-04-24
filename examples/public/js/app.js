@@ -12,17 +12,12 @@ require.define("/app", function (require, module, exports, __dirname, __filename
 
 
 	ss.event.on('newMessage', function(data) {
-		var html;
 		var from = data.from == userId ? 'You' : data.from;
 		var to = data.to == userId ? 'You' : data.to || "All";
 
-		message = from + ' To ' + to + ': ' + data.message;
-		html = ss.tmpl['chat-message'].render({
-			message: message,
-			time: function() {
-				return timestamp();
-			}
-		});
+		var message = from + ' To ' + to + ': ' + data.message;
+		var html = '<p><span class="time">' + timestamp() + '</span>';
+		html += '<span class="message">' + message + '</span></p>';
 		return $(html).hide().appendTo('#chatlog').slideDown();
 	});
 

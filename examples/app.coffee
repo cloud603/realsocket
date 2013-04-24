@@ -8,6 +8,7 @@ qs = require('querystring')
 app = express()
 app.use express.static(__dirname + "/public")
 ss = require('../src/')
+app.use(ss.http.middleware);
 assets = require('../src/assets')
 config = undefined
 config = require('./server/config/dev')
@@ -63,7 +64,7 @@ app.get "/realsocket.js", (req, res) ->
   res.writeHead(200, {'Content-type': 'text/javascript; charset=utf-8', 'Content-Length': Buffer.byteLength(body)})
   res.end(body)
 
-server = app.listen 3005
+server = app.listen 3007
 ss.start server
 
-console.log "Express started on port 3005"
+console.log "Express started on port 3007"
