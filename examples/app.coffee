@@ -7,12 +7,13 @@ url = require('url')
 qs = require('querystring')
 app = express()
 app.use express.static(__dirname + "/public")
-ss = require('../src/')
+ss = require('../lib/')
 app.use(ss.http.middleware);
-assets = require('../src/assets')
+assets = require('../lib/assets')
 config = undefined
 config = require('./server/config/dev')
 
+ss.api.rpcPath = path.join __dirname, 'server/rpc'
 ss.ws.transport.use "engineio",
   client:
     transports: [ "websocket", "htmlfile", "xhr-polling", "jsonp-polling" ]

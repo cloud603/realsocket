@@ -8,8 +8,7 @@ pathlib = require('path')
 apiTree = require('apitree')
 
 module.exports = (ss, middleware) ->
-  #TODO 此处代码要更发，realsocket中不能有examples的路径
-  dir = pathlib.join(ss.root, 'examples/server/rpc')
+  dir = ss.rpcPath || pathlib.join(ss.root, 'server/rpc')
   api = apiTree.createApiTree(dir)
 
   request = (req, res) ->
